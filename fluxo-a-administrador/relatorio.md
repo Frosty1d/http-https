@@ -18,17 +18,17 @@
 
 | Campo | Valor |
 |---|---|
-| Nome | [seu nome completo] |
-| RA | [seu RA] |
+| Nome | Micaias Emanuel Oliveira Eras |
+| RA | 240022 |
 | Disciplina | Redes de Computadores |
-| Turma | [sua turma] |
-| Data | [data da realização] |
+| Turma | SI/N |
+| Data | 15/05/26 |
 | Fluxo | **A — Aluno com privilégio de administrador** |
-| SO utilizado | [Windows 10 / Windows 11] |
+| SO utilizado | Windows 10 |
 | Ferramenta de proxy | Fiddler Classic |
-| Navegador(es) | [Chrome / Edge / Firefox / ...] |
-| Decriptação HTTPS habilitada? | [sim / não] |
-| Certificado Fiddler instalado durante a atividade? | [sim / não] |
+| Navegador(es) | Chrome |
+| Decriptação HTTPS habilitada? | sim |
+| Certificado Fiddler instalado durante a atividade? | sim |
 
 ---
 
@@ -36,34 +36,34 @@
 
 ### Captura
 
-<!-- arraste a captura aqui: sessão de http://example.com com Request/Response Raw -->
+<img width="1206" height="626" alt="Tarefa1" src="https://github.com/user-attachments/assets/091acfd1-93d9-456d-ba1c-bd6343808f57" />
 
 **Request-line:**
 
 ```http
-[ex: GET / HTTP/1.1]
+GET http://example.com/ HTTP/1.1
 ```
 
 **Status-line:**
 
 ```http
-[ex: HTTP/1.1 200 OK]
+HTTP/1.1 200 OK
 ```
 
 **Cabeçalhos do request:**
 
 | Cabeçalho | Função |
 |---|---|
-| [...] | [...] |
-| [...] | [...] |
-| [...] | [...] |
+| Host | Nome de domínio do servidor (obrigatório em HTTP/1.1) |
+| [User-Agent | Identificação do cliente/navegador|
+| Accept | Tipos MIME aceitos na resposta |
 
 **Resposta:**
 
 | Campo | Valor observado |
 |---|---|
-| `Content-Type` | [...] |
-| `Content-Length` ou `Transfer-Encoding` | [...] |
+| `Content-Type` | text/html |
+| `Content-Length` ou `Transfer-Encoding` | chunked |
 
 ---
 
@@ -71,35 +71,66 @@
 
 ### Captura
 
-<!-- arraste a captura aqui: Request Raw e Response JSON -->
+<img width="1207" height="959" alt="Tarefa2" src="https://github.com/user-attachments/assets/04b471d5-51c6-4ea1-bd35-5dd13341bac2" />
 
 **Request-line completa:**
 
 ```http
-[colar aqui]
+GET https://http.aulasrede.com.br/get?aluno=MicaiasYuri&curso=redes HTTP/1.1
+Host: http.aulasrede.com.br
+Connection: keep-alive
+sec-ch-ua: "Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7
 ```
 
 **Cabeçalhos-chave:**
 
 | Cabeçalho | Valor |
 |---|---|
-| `Host` | [...] |
-| `User-Agent` | [...] |
-| `Accept` | [...] |
+| `Host` | http.aulasrede.com.br|
+| `User-Agent` | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 |
+| `Accept` | text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 |
 
 **Campos do JSON de resposta:**
 
 ```json
 {
-  "args": [colar valor],
-  "headers": [colar valor resumido],
-  "origin": [colar valor]
+  "args": {
+    "aluno": [
+      "MicaiasYuri"
+    ],
+    "curso": [
+      "redes"
+    ]
+  },
+  "headers": HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Sat, 16 May 2026 00:22:58 GMT
+Cache-Control: no-store
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+x-ms-middleware-request-id: 36c249d2-315f-43f3-a99a-2b26155a2e60
+Request-Context: appId=cid-v1:2d538d8e-7800-4f9b-b386-42b390243931
+Content-Length: 3288
+,
+  "origin": "200.210.165.75:39973"
 }
 ```
 
 **Resposta curta:** o que o campo `origin` representa? O `User-Agent` retornado coincide com o enviado?
 
-[resposta]
+o campo Origin representa onde uma requisição se originou.
+Sim, o User-Agent retorna o mesmo valor enviado
 
 ---
 
@@ -107,23 +138,37 @@
 
 ### Captura
 
-<!-- arraste a captura aqui: POST para /post em Request Raw -->
+<img width="1054" height="218" alt="Tarefa3" src="https://github.com/user-attachments/assets/9bc2bb24-98ee-4ad8-a841-4ba0b8a0c4d9" />
 
 **Request-line do POST:**
 
 ```http
-[colar aqui]
+
 ```
 
 | Cabeçalho | Valor |
 |---|---|
-| `Content-Type` | [...] |
-| `Content-Length` | [...] |
+| `Content-Type` | text/html; charset=utf-8 |
+| `Content-Length` | chunked |
 
 **Corpo do request:**
 
 ```text
-[colar aqui]
+GET https://httpbingo.org/ HTTP/1.1
+Host: httpbingo.org
+Connection: keep-alive
+sec-ch-ua: "Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7
 ```
 
 **Campo `form` da resposta:**
